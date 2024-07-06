@@ -2,7 +2,6 @@ package cleancode.studycafe.asis.io;
 
 import cleancode.studycafe.asis.model.StudyCafeLockerPass;
 import cleancode.studycafe.asis.model.StudyCafePass;
-
 import java.util.List;
 
 public class OutputHandler {
@@ -33,10 +32,7 @@ public class OutputHandler {
 
     public void askLockerPass(StudyCafeLockerPass lockerPass) {
         System.out.println();
-        String askMessage = String.format(
-            "사물함을 이용하시겠습니까? (%s)",
-            lockerPass.display()
-        );
+        String askMessage = String.format("사물함을 이용하시겠습니까? (%s)", lockerPass.display());
 
         System.out.println(askMessage);
         System.out.println("1. 예 | 2. 아니오");
@@ -56,7 +52,8 @@ public class OutputHandler {
             System.out.println("이벤트 할인 금액: " + discountPrice + "원");
         }
 
-        int totalPrice = selectedPass.getPrice() - discountPrice + (lockerPass != null ? lockerPass.getPrice() : 0);
+        int totalPrice =
+                selectedPass.getPrice() - discountPrice + (lockerPass != null ? lockerPass.getPrice() : 0);
         System.out.println("총 결제 금액: " + totalPrice + "원");
         System.out.println();
     }
@@ -64,5 +61,4 @@ public class OutputHandler {
     public void showSimpleMessage(String message) {
         System.out.println(message);
     }
-
 }

@@ -14,7 +14,8 @@ public class StudyCafePass {
         this.discountRate = discountRate;
     }
 
-    public static StudyCafePass of(StudyCafePassType passType, int duration, int price, double discountRate) {
+    public static StudyCafePass of(
+            StudyCafePassType passType, int duration, int price, double discountRate) {
         return new StudyCafePass(passType, duration, price, discountRate);
     }
 
@@ -46,5 +47,4 @@ public class StudyCafePass {
         }
         return "";
     }
-
 }
