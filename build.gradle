@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id("com.diffplug.spotless") version '6.25.0'
 }
 
 group = 'cleancode'
@@ -20,4 +21,31 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        indentWithTabs(2)
+        indentWithSpaces(4)
+        endWithNewline()
+    }
+}
+
+tasks.register('settingGitHooks') {
+    def preCommitFile = new File(project.projectDir, ".githooks/pre-commit")
+    if (preCommitFile.exists()) {
+        exec {
+            commandLine("chmod", "+x", preCommitFile.absolutePath)
+        }
+    } else {
+        throw new GradleException("No pre-commit file found at $preCommitFile")
+    }
+
+    exec {
+        commandLine("git", "config", "core.hookspath", ".githooks")
+    }
 }
