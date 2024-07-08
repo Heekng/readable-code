@@ -17,7 +17,8 @@ public class MinesweeperGame {
     public static final String FLAG_SIGN = "⚑";
     public static final String LAND_MINE_SIGN = "☼";
     public static final String CLOSED_CELL_SIGN = "□";
-    public static final String OPEND_CELL_SIGN = "■";
+    public static final String OPENED_CELL_SIGN = "■";
+
     private static int gameStatus = 0; // 0: 게임 중, 1: 승리, -1: 패배
 
     public static void main(String[] args) {
@@ -243,7 +244,7 @@ public class MinesweeperGame {
             BOARD[row][col] = String.valueOf(NEARBY_LAND_MINE_COUNTS[row][col]);
             return;
         } else {
-            BOARD[row][col] = OPEND_CELL_SIGN;
+            BOARD[row][col] = OPENED_CELL_SIGN;
         }
         open(row - 1, col - 1);
         open(row - 1, col);
