@@ -32,6 +32,10 @@ public class CellSnapshot {
         return of(CellSnapshotStatus.NUMBER, nearbyLandMineCount);
     }
 
+    public boolean isSameStatus(CellSnapshotStatus cellSnapshotStatus) {
+        return status == cellSnapshotStatus;
+    }
+
     public static CellSnapshot ofUnchecked() {
         return of(CellSnapshotStatus.UNCHECKED, 0);
     }
@@ -45,6 +49,7 @@ public class CellSnapshot {
     }
 
     // valueObject 라고 생각되면 equals & hashCode 를 재정의하는 습관을 들이자
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
